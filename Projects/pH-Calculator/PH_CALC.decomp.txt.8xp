@@ -1,13 +1,14 @@
-While 0
-  PH / PHO Calculator
-  (c) 2019 Tyler Holewinski
-  Special thanks to Ms. Reeves
-  Westosha Central High School
-  
-  D: Input Data
-  I: Iterator
-  A[1-4]: PH, PHO, [H+], [OH-]
-End
+"pH / pOH Calculator (decomp) [v1.2]"
+"Source Code & Binaries (c) (AGPL-v3) 2019 Tyler Holewinski"
+"dist. http://github.com/erwijet/Ti-84-projects"
+"Untokenized Source Code intened for TokenIDE.exe"
+"Avalible at ticalc.org/pub/win/tokens.zip"
+"Special thanks to Ms. Deirdre Reeves"
+"Westosha Central High School"
+"D: Input Data"
+"I: iterator"
+"[A]: pH, pOH, [H+], [OH-]"
+
 {4,1→dim([A]
 Menu("Given Info","PH",PH,"POH",PO,"[H+]/[H3O+]",CH,"[OH-]",CO
 
