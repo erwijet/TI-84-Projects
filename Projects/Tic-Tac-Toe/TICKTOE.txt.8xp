@@ -33,8 +33,6 @@
 #define DOWN_ARROW 34
 #define ENTER_KEY 105
 
-{1,5}→dim([B])
-
 1→sx
 1→sy
 20→SIZE
