@@ -3,6 +3,7 @@ Authored by [erwijet](http://github.com/erwijet)
 
 
 ## Programs List
+
 |Project Name|Includes Binary & Decomp| Includes Macroed Source Code|
 |---|:---:|:---:|
 |[Tic Tac Toe](https://github.com/erwijet/TI-84-Projects/tree/master/Projects/Tic-Tac-Toe)| ✔ | ✔ |
