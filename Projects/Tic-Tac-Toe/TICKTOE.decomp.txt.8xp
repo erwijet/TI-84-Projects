@@ -4,8 +4,6 @@
 "Untokenized Source Code intened for TokenIDE.exe"
 "Avalible at ticalc.org/pub/win/tokens.zip"
 
-{1,5}→dim([B])
-
 1→C
 1→D
 20→U
