@@ -1,0 +1,257 @@
+#define op_add 0
+#define op_sub 1
+#define op_mul 2
+#define op_div 3
+#define op_nop 4
+
+#define True 1
+#define False 0
+
+#define op_set [B]
+#define num_set [C]
+#define perm_set [D]
+
+#define n_max A
+#define valid B
+#define op1 C
+#define op2 D
+#define op3 E
+#define op F
+#define res G
+#define cnt_num_set H
+#define temp L
+
+#define _label_create_exit AA
+#define _label_solve_exit_found AB
+#define _label_solve_exit_notfound AC
+#define _label_create_set AD
+#define _label_solve_set AE
+#define _label_full_exit AF
+
+#define perms L₁
+
+Menu("  Math24 Menu   ","Create set",_label_create_set,"Solve set",_label_solve_set)
+
+Lbl _label_create_set
+
+  DelVar op_set
+  DelVar num_set
+  
+  {1,4}→dim(num_set)
+  {1,3}→dim(op_set)
+
+  0→cnt_num_set
+  op_nop→op
+
+  ClrHome
+
+  Input "num cap: ",n_max
+  Fill(n_max+1,num_set)
+
+  ClrHome
+  Disp "loading…"
+  Output(4,1,"  created      ")
+  Output(5,1,"     & tested  ")
+  Output(8,10,"sets")
+
+  While True
+    True→valid
+    For(I,1,4)
+      If abs(num_set(1,I))>n_max or fPart(num_set(1,I))≠0
+        False→valid
+    End
+    
+    If valid=True
+    Goto _label_create_exit
+     
+     
+    For(I,1,3)
+      randInt(1,3)→op_set(1,I)
+    End
+    
+    While op_set(1,1)=op_set(1,2)=op_set(1,3)
+      For(I,1,3)
+        randInt(1,3)→op_set(1,I)
+      End
+    End
+    
+    For(I,1,4)
+      randInt(1,round(n_max/2))→num_set(1,I)
+    End
+    
+    24→res
+    For(I,1,3)
+      op_set(1,4-I)→op
+      
+      If op=op_add
+        num_set(1,4-I)+res→res
+      If op=op_sub
+        num_set(1,4-I)-res→res
+      If op=op_mul
+        num_set(1,4-I)*res→res
+      If op=op_div
+        num_set(1,4-I)/res→res
+    End
+    
+    res→num_set(1,1)
+    cnt_num_set+1→cnt_num_set
+    
+    Output(8,3,cnt_num_set)
+  End
+
+Lbl _label_create_exit
+
+  ClrHome
+  Disp num_set
+  DelVar op_set
+  getKey
+  Repeat Ans
+    getKey
+  End
+Goto _label_full_exit
+
+Lbl _label_solve_set
+  DelVar perm_set
+  DelVar op_set
+  DelVar num_set
+  
+  {24,4}→dim(perm_set)
+  {1,4}→dim(op_set)
+  {1,4}→dim(num_set)
+  
+  ClrHome
+  Input "1st num: ",temp
+  temp→num_set(1,1)
+  Input "2nd num: ",temp
+  temp→num_set(1,2)
+  Input "3rd num: ",temp
+  temp→num_set(1,3)
+  Input "4th num: ",temp
+  temp→num_set(1,4)
+  
+  ClrHome
+  Disp "loading…"
+  Disp ""
+  Output(8,1,"find sets:   /24")
+  
+  ClrList perms
+  
+  For(I,1,4)
+    num_set(1,I)→perms(1+dim(perms))
+  End
+  
+  For(X,1,24)
+    For(I,1,4)
+      perms(I)→perm_set(X,I)
+    End
+    abs(4-8fPart(X/8)-3not(fPart(X/4→Y
+    perms(Ans+1→Z
+    perms(Y→perms(Y+1
+    Z→perms(Y
+    Output(8,12,X)
+  End
+  
+  Output(8,1,"guess      /1536")
+  
+  0→cnt_num_set
+  
+  For(I,1,24)
+    For(J,1,4)
+      For(K,1,4)
+        For(N,1,4)
+          cnt_num_set+1→cnt_num_set
+          Output(8,8,cnt_num_set)
+        
+          If J=1
+            perm_set(I,1)+perm_set(I,2)→temp
+          If J=2
+            perm_set(I,1)-perm_set(I,2)→temp
+          If J=3
+            perm_set(I,1)*perm_set(I,2)→temp
+          If J=4
+            perm_set(I,1)/perm_set(I,2)→temp
+          
+          If K=1
+            temp+perm_set(I,3)→temp
+          If K=2
+            temp-perm_set(I,3)→temp
+          If K=3
+            temp*perm_set(I,3)→temp
+          If K=4
+            temp/perm_set(I,3)→temp
+          
+          If N=1
+            temp+perm_set(I,4)→temp
+          If N=2
+            temp-perm_set(I,4)→temp
+          If N=3
+            temp*perm_set(I,4)→temp
+          If N=4
+            temp/perm_set(I,4)→temp
+            
+          If temp=24
+          Then
+            For(P,1,4)
+              perm_set(I,P)→num_set(1,P)
+            End
+          
+            J→op_set(1,1)
+            K→op_set(1,2)
+            N→op_set(1,3)
+            Goto _label_solve_exit_found
+          End
+        End
+      End
+    End
+  End
+Goto _label_solve_exit_notfound
+
+Lbl _label_solve_exit_found
+  ClrHome
+  Output(1,2,num_set(1,1))
+  Output(3,2,num_set(1,2))
+  Output(5,2,num_set(1,3))
+  Output(7,2,num_set(1,4))
+  
+  For(I,1,3)
+    If op_set(1,I)=1
+      "+ (ADD)"→Str1
+    If op_set(1,I)=2
+      "- (SUB)"→Str1
+    If op_set(1,I)=3
+      "* (MUL)"→Str1
+    If op_set(1,I)=4
+      "/ (DIV)"→Str1
+    Output(I*2,2,Str1)
+  End
+  
+  For(I,1,6)
+    Output(I,1,"|")
+  End
+  Output(7,1,"↓")
+  Output(8,1,"             =24")
+  
+  getKey
+  Repeat Ans
+    getKey
+  End
+Goto _label_full_exit
+
+Lbl _label_solve_exit_notfound
+  Disp "Yikes!!!"
+  Disp "Could not solve :("
+  Disp "Check input?"
+  
+  getKey
+  Repeat Ans
+    getKey
+  End
+Goto _label_full_exit
+
+Lbl _label_full_exit
+  ClrHome
+  DelVar num_set
+  DelVar op_set
+  DelVar perm_set
+  ClrList perms
+"@erwijet & M.W.

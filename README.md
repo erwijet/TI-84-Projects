@@ -8,6 +8,7 @@ Authored by [erwijet](http://github.com/erwijet)
 |---|:---:|:---:|
 |[Tic Tac Toe](https://github.com/erwijet/TI-84-Projects/tree/master/Projects/Tic-Tac-Toe)| ✔ | ✔ |
 |[pH Calculator](https://github.com/erwijet/TI-84-Projects/tree/master/Projects/pH-Calculator)| ✔ | [❌](? "Yeahh, so I didn't know about the commenting and macro features when I made this project, so they aren't included 😬") |
+|[Math24](https://github.com/erwijet/TI-84-Projects/tree/master/Projects/Math24)| ✔ | ✔ |
 
 ## File Structure
 
